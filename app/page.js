@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./page.module.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -51,9 +51,36 @@ const AP_CLASSES = [
   "World History Modern",
 ];
 
+const COLLEGES_KEY = "selectedColleges";
+
 export default function Home() {
   const [apScores, setApScores] = useState([]);
   const [selectedColleges, setSelectedColleges] = useState([]);
+  const skipSave = useRef(true);
+
+  // Load colleges from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(COLLEGES_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setSelectedColleges(parsed);
+        }
+      }
+    } catch {}
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Save colleges to localStorage on every change
+  useEffect(() => {
+    if (skipSave.current) {
+      skipSave.current = false;
+      return;
+    }
+    try {
+      localStorage.setItem(COLLEGES_KEY, JSON.stringify(selectedColleges));
+    } catch {}
+  }, [selectedColleges]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleAddCollege(college) {
     setSelectedColleges(prev => [...prev, college]);
