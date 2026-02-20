@@ -1,0 +1,171 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.placeholder {
+  background: white;
+  border: 1px solid #bde4f7;
+  border-radius: 14px;
+  padding: 48px 24px;
+  text-align: center;
+  color: #bbb;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* ── Card ── */
+.card {
+  background: white;
+  border: 1px solid #bde4f7;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  min-height: 52px;
+}
+
+.cardHeaderClickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.cardHeaderClickable:hover {
+  background: #f5fbff;
+}
+
+.collegeName {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.noData {
+  font-size: 13px;
+  color: #aaa;
+  font-style: italic;
+}
+
+/* ── Credit chips ── */
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.takenChip {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #e8f5e9;
+  color: #2e7d32;
+  white-space: nowrap;
+}
+
+.predictedChip {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #e3f2fd;
+  color: #1565c0;
+  white-space: nowrap;
+}
+
+/* ── Chevron ── */
+.chevron {
+  flex-shrink: 0;
+  color: #0895d3;
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* ── Breakdown table ── */
+.breakdown {
+  border-top: 1px solid #bde4f7;
+}
+
+.breakdownTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.breakdownTable thead tr {
+  background: #0895d3;
+}
+
+.breakdownTable th {
+  color: white;
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.breakdownTable tbody tr {
+  border-bottom: 1px solid #f0f4f8;
+}
+
+.breakdownTable tbody tr:last-child {
+  border-bottom: none;
+}
+
+.breakdownTable tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+.breakdownTable tbody tr:hover {
+  background: #f0f8ff;
+}
+
+.breakdownTable td {
+  padding: 10px 16px;
+  color: #333;
+  vertical-align: middle;
+}
+
+/* Dimmed row when score is too low */
+.rowNoCredit td {
+  color: #aaa;
+}
+
+/* Status badges in breakdown */
+.takenBadge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.predictedBadge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.scoreTooLow {
+  color: #e57373;
+  font-style: italic;
+  font-size: 12px;
+}

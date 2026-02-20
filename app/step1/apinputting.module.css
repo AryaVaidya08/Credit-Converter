@@ -1,0 +1,83 @@
+/* Outer wrapper: position:relative lets the button overhang, no overflow:hidden */
+.outer {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 32px;
+}
+
+/* The visual card: border, shadow, rounded corners, clips table rows */
+.tableCard {
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid #bde4f7;
+  background: white;
+}
+
+/* Floating + button centered on the top-right corner of the card */
+.addBtn {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2.5px solid white;
+  background: #0895d3;
+  color: white;
+  font-size: 22px;
+  font-weight: 300;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 1px 0;
+  box-shadow: 0 2px 10px rgba(8, 149, 211, 0.4);
+  transition: background 0.15s, transform 0.1s;
+}
+
+.addBtn:hover {
+  background: #0678ae;
+}
+
+.addBtn:active {
+  transform: scale(0.9);
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+/* Column widths */
+.colIndex  { width: 80px; }
+.colName   { min-width: 0; }
+.colStatus { width: 200px; }
+.colScore  { width: 130px; }
+.colDelete { width: 52px; }
+
+/* Header cells — solid brand color with white text */
+.th {
+  padding: 14px 12px;
+  background-color: #0895d3;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: left;
+}
+
+.thIndex {
+  text-align: right;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.thScore {
+  padding-right: 20px;
+}

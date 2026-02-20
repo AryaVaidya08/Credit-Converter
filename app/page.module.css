@@ -1,3 +1,53 @@
 .page {
+    min-height: 100vh;
+    background: #f0f4f8;
+    padding-bottom: 64px;
+}
 
+.stepSection {
+    max-width: 1248px;
+    margin: 0 auto;
+    padding: 20px 24px 0;
+}
+
+.stepHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.stepBadge {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #0895d3;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(8, 149, 211, 0.3);
+}
+
+.stepTitle {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #0895d3;
+    margin: 0;
+}
+
+.placeholder {
+    background: white;
+    border: 1px solid #bde4f7;
+    border-radius: 14px;
+    padding: 48px 24px;
+    text-align: center;
+    color: #bbb;
+    font-size: 14px;
+    font-style: italic;
 }

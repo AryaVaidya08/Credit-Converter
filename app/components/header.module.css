@@ -1,0 +1,27 @@
+:root {
+    --header-border: #5ccbff;
+}
+
+.headerbox {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    align-items: center;
+    background-color: #0895d3;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-left: 2px solid var(--header-border);
+    border-right: 2px solid var(--header-border);
+    border-bottom: 2px solid var(--header-border);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.headertitle {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    color: white;
+    margin: 0;
+}

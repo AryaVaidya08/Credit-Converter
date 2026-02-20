@@ -1,0 +1,165 @@
+/* ── Standalone bar mode ── */
+.page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  background-color: #f4f6f8;
+  border: 1px solid #ddd;
+}
+
+.index {
+  font-weight: 600;
+  font-size: 16px;
+  width: 25px;
+  flex-shrink: 0;
+  text-align: right;
+  color: #999;
+}
+
+
+/* ── Score input ── */
+.scoreInput {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #d0d0d0;
+  text-align: center;
+  font-size: 15px;
+  font-family: inherit;
+  color: #222;
+  background: white;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.scoreInput:focus {
+  border-color: #0895d3;
+  box-shadow: 0 0 0 3px rgba(8, 149, 211, 0.12);
+}
+
+
+/* ── Segmented pill with sliding indicator ── */
+.segmented {
+  position: relative;
+  display: flex;
+  background: #e0f3fc;
+  border-radius: 22px;
+  padding: 3px;
+  border: 1px solid #b8dff5;
+  flex-shrink: 0;
+  overflow: hidden;          /* clips the slider during transition */
+}
+
+/* The sliding highlight — sits behind the buttons */
+.segSlider {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc((100% - 6px) / 2);
+  background: #0895d3;
+  border-radius: 19px;
+  box-shadow: 0 1px 5px rgba(8, 149, 211, 0.35);
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* Slide to the right when Predicted is active */
+.segSliderRight {
+  transform: translateX(100%);
+}
+
+.segOption {
+  position: relative;
+  z-index: 1;           /* sit above the slider */
+  flex: 1;
+  padding: 6px 16px;
+  border-radius: 19px;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: inherit;
+  color: #5a9fbe;
+  cursor: pointer;
+  transition: color 0.22s;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Active option text turns white (slider provides the background) */
+.segActive {
+  color: white;
+}
+
+
+/* ── Table mode row & cells ── */
+
+/* Alternating row backgrounds */
+.tableRow:nth-child(even) td {
+  background-color: #f7f9fb;
+}
+
+/* Hover — same specificity as nth-child, comes later so it wins */
+.tableRow:hover td {
+  background-color: #edf7fd;
+}
+
+.tdIndex {
+  padding: 13px 10px 13px 28px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #bbb;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tdName {
+  padding: 10px 12px;
+}
+
+.tdStatus {
+  padding: 10px 12px;
+}
+
+.tdScore {
+  padding: 10px 12px;
+}
+
+.tdDelete {
+  padding: 10px 14px 10px 4px;
+  text-align: center;
+}
+
+.deleteBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: #ccc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.deleteBtn:hover:not(:disabled) {
+  background: #fff0f0;
+  color: #e03535;
+}
+
+.deleteBtn:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
