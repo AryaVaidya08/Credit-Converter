@@ -7,13 +7,13 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   metadataBase: new URL("https://credit-converter.vercel.app"),
   title: "AP Credit Calculator",
-  description: "This website allows you to understand how many credits you will get for each college based on your AP scores.",
+  description: "This website allows you to understand how many credits you will get for each college based on your AP scores. Supports over 2,300 schools. Built by Arya Vaidya.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "AP Credit Calculator",
-    description: "This website allows you to understand how many credits you will get for each college based on your AP scores.",
+    description: "This website allows you to understand how many credits you will get for each college based on your AP scores. Supports over 2,300 schools. Built by Arya Vaidya.",
     url: "https://credit-converter.vercel.app",
     siteName: "AP Credit Calculator",
     locale: "en_US",
@@ -22,7 +22,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AP Credit Calculator",
-    description: "This website allows you to understand how many credits you will get for each college based on your AP scores.",
+    description: "This website allows you to understand how many credits you will get for each college based on your AP scores. Supports over 2,300 schools. Built by Arya Vaidya.",
   },
   robots: {
     index: true,
