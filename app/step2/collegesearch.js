@@ -237,7 +237,7 @@ export default function CollegeSearch({ selectedColleges = [], onAddCollege, onR
                 <tr key={c.uuid} className={styles.tableRow}>
                   <td className={styles.tdIndex}>{i + 1}.</td>
                   <td className={styles.tdName}>{c.name}</td>
-                  <td className={styles.tdCity}>{c.city}</td>
+                  <td className={styles.tdCity} data-state={c.state}>{c.city}</td>
                   <td className={styles.tdState}>{c.state}</td>
                   <td className={styles.tdDelete}>
                     <button

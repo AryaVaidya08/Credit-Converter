@@ -4,6 +4,33 @@
   gap: 10px;
 }
 
+.resultsTopBar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: -2px;
+}
+
+.downloadBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid #0895d3;
+  background: white;
+  color: #0895d3;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.downloadBtn:hover {
+  background: #0895d3;
+  color: white;
+}
+
 .placeholder {
   background: white;
   border: 1px solid #bde4f7;
@@ -189,13 +216,17 @@
     flex: 1;
   }
 
-  /* Breakdown table scrolls horizontally instead of overflowing */
-  .breakdown {
-    overflow-x: auto;
+  /* Hide Status and Min Score Required columns — 3 columns fit without scrolling */
+  .breakdownTable th:nth-child(2),
+  .breakdownTable td:nth-child(2),
+  .breakdownTable th:nth-child(4),
+  .breakdownTable td:nth-child(4) {
+    display: none;
   }
 
   .breakdownTable th,
   .breakdownTable td {
-    padding: 9px 10px;
+    padding: 9px 12px;
+    white-space: normal;
   }
 }

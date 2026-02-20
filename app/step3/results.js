@@ -141,8 +141,43 @@ function CollegeCard({ college, validScores }) {
   );
 }
 
+function csvEscape(val) {
+  const s = String(val ?? "");
+  return `"${s.replace(/"/g, '""')}"`;
+}
+
 export default function Results({ apScores, selectedColleges }) {
   const validScores = apScores.filter(row => row.selectedClass && row.score);
+
+  function handleDownload() {
+    const lines = [
+      ["College", "AP Course", "Status", "Your Score", "Min Score Required", "Credits Given"].join(","),
+    ];
+
+    for (const college of selectedColleges) {
+      const collegeData = apData[college.uuid];
+      if (!collegeData) continue;
+      const { breakdown } = calculateCredits(collegeData, validScores);
+      for (const item of breakdown) {
+        lines.push([
+          csvEscape(college.name),
+          csvEscape(item.apName),
+          csvEscape(item.isTaken ? "Taken" : "Predicted"),
+          csvEscape(item.score),
+          csvEscape(item.noCredit ? "—" : item.scoreRequired),
+          csvEscape(item.noCredit ? "Score too low" : item.creditsGiven),
+        ].join(","));
+      }
+    }
+
+    const blob = new Blob([lines.join("\n")], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "ap_credits.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
 
   if (validScores.length === 0 && selectedColleges.length === 0) {
     return (
@@ -170,6 +205,14 @@ export default function Results({ apScores, selectedColleges }) {
 
   return (
     <div className={styles.results}>
+      <div className={styles.resultsTopBar}>
+        <button className={styles.downloadBtn} onClick={handleDownload}>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.5 1v7.5M6.5 8.5l-2.5-2.5M6.5 8.5l2.5-2.5M1.5 10.5h10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          Download CSV
+        </button>
+      </div>
       {selectedColleges.map(college => (
         <CollegeCard key={college.uuid} college={college} validScores={validScores} />
       ))}

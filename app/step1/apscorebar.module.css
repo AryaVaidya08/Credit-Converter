@@ -163,3 +163,69 @@
   opacity: 0.2;
   cursor: default;
 }
+
+@media (max-width: 600px) {
+  /* Each row becomes an individual white card */
+  .tableRow {
+    display: grid;
+    grid-template-columns: 28px 1fr 80px 32px;
+    grid-template-areas:
+      "idx  name  name  del"
+      ".    stat  scr   .  ";
+    background: white;
+    border: 1px solid #bde4f7;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    padding: 10px 12px;
+    column-gap: 8px;
+    row-gap: 8px;
+  }
+
+  /* Disable alternating and hover backgrounds inside cards */
+  .tableRow:nth-child(even) td,
+  .tableRow:hover td {
+    background-color: transparent;
+  }
+
+  .tdIndex {
+    grid-area: idx;
+    padding: 0;
+    font-size: 13px;
+    align-self: center;
+  }
+
+  .tdName {
+    grid-area: name;
+    padding: 0;
+  }
+
+  .tdStatus {
+    grid-area: stat;
+    padding: 0;
+    align-self: center;
+  }
+
+  .tdScore {
+    grid-area: scr;
+    padding: 0;
+    align-self: center;
+  }
+
+  .tdDelete {
+    grid-area: del;
+    padding: 0;
+    align-self: center;
+  }
+
+  /* Compact segmented control */
+  .segOption {
+    padding: 5px 8px;
+    font-size: 13px;
+  }
+
+  /* Compact score input */
+  .scoreInput {
+    padding: 7px 8px;
+    font-size: 14px;
+  }
+}

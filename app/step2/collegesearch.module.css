@@ -363,20 +363,89 @@
     width: 100%;
   }
 
-  /* Allow the selected colleges table to scroll horizontally */
+  /* Remove the card shell — each row becomes its own card */
   .tableCard {
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: visible;
+    background: transparent;
+    border: none;
+    border-radius: 0;
   }
 
-  /* Tighten column widths */
-  .colIndex  { width: 44px; }
-  .colCity   { width: 130px; }
-  .colState  { width: 60px; }
-  .colDelete { width: 44px; }
+  /* Make table and body block-level so rows can be grid cards */
+  .table,
+  .table tbody {
+    display: block;
+  }
 
-  .th {
-    padding: 12px 8px;
-    font-size: 11px;
+  .table colgroup,
+  .table thead {
+    display: none;
+  }
+
+  /* Each selected college row becomes a card */
+  .tableRow {
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "idx  name  del"
+      ".    city  city";
+    background: white;
+    border: 1px solid #bde4f7;
+    border-radius: 12px;
+    margin-bottom: 6px;
+    padding: 10px 12px;
+    column-gap: 8px;
+    row-gap: 2px;
+  }
+
+  /* Reset alternating and hover backgrounds */
+  .tableRow:nth-child(even) td,
+  .tableRow:hover td {
+    background-color: transparent;
+  }
+
+  .tdIndex {
+    grid-area: idx;
+    padding: 0;
+    font-size: 13px;
+    align-self: start;
+    padding-top: 2px;
+  }
+
+  .tdName {
+    grid-area: name;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: normal;
+    overflow: visible;
+  }
+
+  .tdCity {
+    grid-area: city;
+    padding: 0;
+    font-size: 12px;
+    color: #888;
+    white-space: normal;
+    overflow: visible;
+  }
+
+  /* Append the state abbreviation after the city via data-state attribute */
+  .tdCity::after {
+    content: ", " attr(data-state);
+    font-weight: 600;
+    color: #0895d3;
+  }
+
+  .tdState {
+    display: none;
+  }
+
+  .tdDelete {
+    grid-area: del;
+    padding: 0;
+    align-self: start;
+    padding-top: 2px;
   }
 }

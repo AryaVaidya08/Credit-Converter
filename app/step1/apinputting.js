@@ -4,13 +4,38 @@ import { useState, useRef, useEffect } from "react";
 import ApScoreBar from "./apscorebar";
 import styles from "./apinputting.module.css";
 
+const STORAGE_KEY = "apScores";
+
 export default function ApInputting({ apClasses = [], onScoresChange }) {
   const [rows, setRows] = useState([{ id: 0, selectedClass: "", isTaken: true, score: "" }]);
   const nextId = useRef(1);
+  const skipSave = useRef(true);
 
+  // Notify parent + save to localStorage on every rows change
   useEffect(() => {
     if (onScoresChange) onScoresChange(rows);
+    if (skipSave.current) {
+      skipSave.current = false;
+      return;
+    }
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(rows));
+    } catch {}
   }, [rows]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setRows(parsed);
+          nextId.current = Math.max(...parsed.map(r => r.id), 0) + 1;
+        }
+      }
+    } catch {}
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function addRow() {
     setRows(prev => [...prev, { id: nextId.current++, selectedClass: "", isTaken: true, score: "" }]);
