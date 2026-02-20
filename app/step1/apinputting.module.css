@@ -81,3 +81,26 @@
 .thScore {
   padding-right: 20px;
 }
+
+@media (max-width: 600px) {
+  .outer {
+    margin-bottom: 28px;
+  }
+
+  /* Allow the table to scroll horizontally instead of being clipped */
+  .tableCard {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  /* Tighten column widths so the table fits better when scrolling */
+  .colIndex  { width: 48px; }
+  .colStatus { width: 160px; }
+  .colScore  { width: 100px; }
+  .colDelete { width: 44px; }
+
+  .th {
+    padding: 12px 8px;
+    font-size: 11px;
+  }
+}

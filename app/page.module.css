@@ -51,3 +51,13 @@
     font-size: 14px;
     font-style: italic;
 }
+
+@media (max-width: 600px) {
+    .page {
+        padding-bottom: 40px;
+    }
+
+    .stepSection {
+        padding: 16px 12px 0;
+    }
+}

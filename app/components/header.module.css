@@ -25,3 +25,13 @@
     color: white;
     margin: 0;
 }
+
+@media (max-width: 600px) {
+    .headerbox {
+        height: 56px;
+    }
+
+    .headertitle {
+        font-size: 22px;
+    }
+}

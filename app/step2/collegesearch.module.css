@@ -351,3 +351,32 @@
   background: #fff0f0;
   color: #e03535;
 }
+
+@media (max-width: 600px) {
+  /* Stack search input and state filter vertically */
+  .searchRow {
+    flex-direction: column;
+  }
+
+  /* State filter spans full width when stacked */
+  .stateTrigger {
+    width: 100%;
+  }
+
+  /* Allow the selected colleges table to scroll horizontally */
+  .tableCard {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  /* Tighten column widths */
+  .colIndex  { width: 44px; }
+  .colCity   { width: 130px; }
+  .colState  { width: 60px; }
+  .colDelete { width: 44px; }
+
+  .th {
+    padding: 12px 8px;
+    font-size: 11px;
+  }
+}
