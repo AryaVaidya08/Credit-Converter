@@ -90,6 +90,14 @@ export default function ApInputting({ apClasses = [], onScoresChange }) {
                 tableMode
               />
             ))}
+            {rows.some(r => r.selectedClass !== "") && (
+              <tr className={styles.skeletonRow} onClick={addRow}>
+                <td colSpan={5} className={styles.skeletonCell}>
+                  <span className={styles.skeletonPlus}>+</span>
+                  <span className={styles.skeletonLabel}>Add another AP course</span>
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
